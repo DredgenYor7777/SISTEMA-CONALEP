@@ -14,10 +14,8 @@ Este proyecto es un sistema diseñado específicamente para el control de invent
 
 ### Control de préstamos:
 - Registrar préstamos de libros a usuarios.
-- Seguimiento del estado de los préstamos (devueltos, en préstamo, retrasados).
+- Seguimiento del estado de los préstamos (devueltos, en préstamo).
 
-### Búsqueda avanzada:
-- Filtrar libros por título, autor, categoría o estado.
 
 ### Reportes:
 - Generar reportes en Excel de inventarios y préstamos para análisis y auditorías.
@@ -33,7 +31,7 @@ Sigue estos pasos para instalar y ejecutar el sistema:
    git clone https://github.com/DredgenYor7777/SISTEMA-CONALEP.git
 Configura la base de datos:
 
-Ve a la carpeta Bd/ del proyecto.
+Ve a la carpeta Bd/ del proyecto dentro de la rama master.
 Importa el archivo conalep_version1.sql a tu servidor MySQL usando tu herramienta favorita (por ejemplo, phpMyAdmin o línea de comandos).
 Comando para importar desde la terminal:
 
