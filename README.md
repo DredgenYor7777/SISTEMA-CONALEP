@@ -26,7 +26,7 @@ Sigue estos pasos para instalar y ejecutar el sistema:
 
 1. Clona este repositorio:
    bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git
+   https://github.com/DredgenYor7777/SISTEMA-CONALEP.git
 
 Ve a la carpeta Bd/ del proyecto.
 
