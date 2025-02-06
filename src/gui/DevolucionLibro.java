@@ -4,6 +4,7 @@ import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 import controlador.bd.Crud;
 import controlador.bd.Sql4;
+import gui.Prestamos;
 import controlador.bd.Sql5;
 import controlador.user.ControladorTabla;
 import controlador.user.ControladorVentana;
@@ -59,10 +60,11 @@ public class DevolucionLibro extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        btnEliminar = new javax.swing.JButton();
+        btnRenovar = new javax.swing.JButton();
         btnBuscador = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtBuscador = new javax.swing.JTextField();
+        btnEliminar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,13 +119,13 @@ public class DevolucionLibro extends javax.swing.JFrame {
         jLabel2.setText("Devolución de libros");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 640, 90));
 
-        btnEliminar.setText("Devolver");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+        btnRenovar.setText("Renovar");
+        btnRenovar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+                btnRenovarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 620, 150, 40));
+        jPanel2.add(btnRenovar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 560, 150, 40));
 
         btnBuscador.setForeground(new java.awt.Color(17, 152, 85));
         btnBuscador.setText("Buscar");
@@ -146,6 +148,14 @@ public class DevolucionLibro extends javax.swing.JFrame {
             }
         });
         jPanel2.add(txtBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 210, 40));
+
+        btnEliminar1.setText("Devolver");
+        btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminar1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnEliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 560, 150, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,49 +204,53 @@ public class DevolucionLibro extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+    private void btnRenovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRenovarActionPerformed
         // TODO add your handling code here:
+        
+        Prestamos newframe = new Prestamos();
+        newframe.setVisible(true);
+        //this.dispose();
 
-        Inventario inv = new Inventario();
-        RegistroLibro rl = new RegistroLibro();
+//        Inventario inv = new Inventario();
+//        RegistroLibro rl = new RegistroLibro();
+//
+//        if (tblLibros.getSelectedRow() == -1) {
+//            JOptionPane.showMessageDialog(null, "Error: no seleccionó un registro");
+//        } else {
+//            int idPrestamo = this.idSeleccionado; // Asumiendo que idSeleccionado es el ID del préstamo seleccionado
+//            int idLibro = obtenerIdLibroDesdePrestamo(idPrestamo); // Método para obtener id_libro desde el id_prestamo
+//
+//            boolean resultado = this.crud.actualizarEliminar(Sql5.eliminarPrestamo(idPrestamo));
+//
+//            if (resultado) {
+//                // Obtener la cantidad disponible actual
+//                ResultSet rs = crud.seleccionar("SELECT cantidadDisponible FROM inventario WHERE id_libro = " + idLibro);
+//                try {
+//                    if (rs.next()) {
+//                        int cantidadDisponible = rs.getInt("cantidadDisponible");
+//                        int nuevaCantidadDisponible = cantidadDisponible + 1;
+//
+//                        // Actualizar la cantidad disponible en el inventario
+//                        boolean actualizacion = crud.actualizarCantidadDisponibleInventario(idLibro, nuevaCantidadDisponible);
+//
+//                        if (actualizacion) {
+//                            JOptionPane.showMessageDialog(null, "Préstamo eliminado y cantidad disponible actualizada", "Éxito", 1);
+//                            mostrarLibrosDev(); // Actualiza la tabla de libros
+//                            inv.mostrarInventario(); // Actualiza la tabla de inventario
+//                        } else {
+//                            JOptionPane.showMessageDialog(null, "Préstamo eliminado pero no se pudo actualizar la cantidad disponible", "Error", 2);
+//                        }
+//                    }
+//                } catch (SQLException ex) {
+//                    Logger.getLogger(DevolucionLibro.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(null, "No se pudo eliminar el préstamo", "Error", 2);
+//            }
+//        }
 
-        if (tblLibros.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(null, "Error: no seleccionó un registro");
-        } else {
-            int idPrestamo = this.idSeleccionado; // Asumiendo que idSeleccionado es el ID del préstamo seleccionado
-            int idLibro = obtenerIdLibroDesdePrestamo(idPrestamo); // Método para obtener id_libro desde el id_prestamo
 
-            boolean resultado = this.crud.actualizarEliminar(Sql5.eliminarPrestamo(idPrestamo));
-
-            if (resultado) {
-                // Obtener la cantidad disponible actual
-                ResultSet rs = crud.seleccionar("SELECT cantidadDisponible FROM inventario WHERE id_libro = " + idLibro);
-                try {
-                    if (rs.next()) {
-                        int cantidadDisponible = rs.getInt("cantidadDisponible");
-                        int nuevaCantidadDisponible = cantidadDisponible + 1;
-
-                        // Actualizar la cantidad disponible en el inventario
-                        boolean actualizacion = crud.actualizarCantidadDisponibleInventario(idLibro, nuevaCantidadDisponible);
-
-                        if (actualizacion) {
-                            JOptionPane.showMessageDialog(null, "Préstamo eliminado y cantidad disponible actualizada", "Éxito", 1);
-                            mostrarLibrosDev(); // Actualiza la tabla de libros
-                            inv.mostrarInventario(); // Actualiza la tabla de inventario
-                        } else {
-                            JOptionPane.showMessageDialog(null, "Préstamo eliminado pero no se pudo actualizar la cantidad disponible", "Error", 2);
-                        }
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(DevolucionLibro.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo eliminar el préstamo", "Error", 2);
-            }
-        }
-
-
-    }//GEN-LAST:event_btnEliminarActionPerformed
+    }//GEN-LAST:event_btnRenovarActionPerformed
 
     private void txtBuscadorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscadorKeyTyped
         // TODO add your handling code here:
@@ -258,13 +272,18 @@ public class DevolucionLibro extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtBuscadorKeyTyped
 
+    private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminar1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscador;
-    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnEliminar1;
+    private javax.swing.JButton btnRenovar;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel9;

@@ -28,6 +28,7 @@ import javax.swing.JFrame;
 
 public class Login extends javax.swing.JFrame {
 
+    //PruebaCambio
     public Login() {
 
         // Desactiva los bordes del sistema para que puedas personalizar los tuyos
